@@ -1,0 +1,44 @@
+CREATE
+
+(DaveC:EMPLOYEE{name:"Dave Clark", age: 60}),
+(BobJ:EMPLOYEE{name:"Bob Jones", age: 55}),
+(JoshS:EMPLOYEE{name:"Josh Simmons", age: 45}),
+(JuliaG:EMPLOYEE{name:"Julia Grant", age: 40}),
+(EdwardS:EMPLOYEE{name:"Edward Simmons", age: 32}),
+(JamesL:EMPLOYEE{name:"James Lemmon", age: 52}),
+(JennyL:EMPLOYEE{name:"Jenny Lane", age: 34}),
+(BradJ:EMPLOYEE{name:"Brad Jenkins", age: 33}),
+(SandraJ:EMPLOYEE{name:"Sandra Jackson", age: 30}),
+
+(HR:DEPARTMENT{shortName:"HR", longName:"Human Resources"}),
+(FN:DEPARTMENT{shortName:"FN", longName:"Finance"}),
+
+(TheCompany:COMPANY{name:"The Company"}),
+
+(BobJ)-[:MEMBER_OF]->(HR),
+(JoshS)-[:MEMBER_OF]->(HR),
+(JuliaG)-[:MEMBER_OF]->(HR),
+(EdwardS)-[:MEMBER_OF]->(HR),
+(JamesL)-[:MEMBER_OF]->(FN),
+(JennyL)-[:MEMBER_OF]->(FN),
+(BradJ)-[:MEMBER_OF]->(FN),
+(SandraJ)-[:MEMBER_OF]->(FN),
+
+(BobJ)-[:REPORTS_TO]->(DaveC),
+(JoshS)-[:REPORTS_TO]->(BobJ),
+(JuliaG)-[:REPORTS_TO]->(JoshS),
+(EdwardS)-[:REPORTS_TO]->(JoshS),
+(JennyL)-[:REPORTS_TO]->(DaveC),
+(JamesL)-[:REPORTS_TO]->(JennyL),
+(BradJ)-[:REPORTS_TO]->(JamesL),
+(SandraJ)-[:REPORTS_TO]->(JamesL),
+
+(TheCompany)-[:EMPLOYS{type:"permanent",salary:150000}] -> (DaveC),
+(TheCompany)-[:EMPLOYS{type:"permanent",salary:120000}] -> (BobJ),
+(TheCompany)-[:EMPLOYS{type:"permanent",salary:90000}] -> (JoshS),
+(TheCompany)-[:EMPLOYS{type:"temp",salary:50000}] -> (JuliaG),
+(TheCompany)-[:EMPLOYS{type:"temp",salary:40000}] -> (EdwardS),
+(TheCompany)-[:EMPLOYS{type:"permanent",salary:150000}] -> (JennyL),
+(TheCompany)-[:EMPLOYS{type:"permanent",salary:120000}] -> (JamesL),
+(TheCompany)-[:EMPLOYS{type:"temp",salary:50000}] -> (BradJ),
+(TheCompany)-[:EMPLOYS{type:"temp",salary:50000}] -> (SandraJ)
